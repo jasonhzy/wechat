@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta charset="utf-8">
+
+<title>弹力小方块</title>
+
+<link rel="shortcut icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<style>
+	.body {overflow: hidden; background: #222; color:#cccccc; margin: 0px; padding: 0px; border: 0px; } 
+
+	#game_div {image-rendering: optimizeSpeed; -webkit-interpolation-mode: nearest-neighbor; margin: 0px; padding: 0px; border: 0px; }
+
+	:-webkit-full-screen #game_div {width: 100%; height: 100%; } 
+</style>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/phaser.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body class="body">
+<div id="wrapper">
+	<div id="game_div" style="position: absolute;"></div>
+</div>
+  <script language=javascript>
+		var mebtnopenurl = 'http://g.weiqimobile.com/';
+		window.shareData = {
+		        "imgUrl": "http://game.vbaitong.com/Public/tlxfk/icon.png",
+		        "timeLineLink": "http://g.weiqimobile.com/games/tlxfk/",
+		        "tTitle": "弹力小方块",
+		        "tContent": "弹力小方块"
+		};
+				
+		function goHome(){
+			window.location=mebtnopenurl;
+		}
+		function clickMore(){
+			if((window.location+"").indexOf("f=zf",1)>0){
+				window.location = "http://g.weiqimobile.com/";
+			 }
+			 else{
+				goHome();
+			 }
+		}
+		function dp_share(){
+			document.getElementById("share").style.display="";
+			
+		}
+		function dp_Ranking(){
+			window.location=mebtnopenurl;
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		    
+		    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+		        WeixinJSBridge.invoke('sendAppMessage', {
+		            "img_url": window.shareData.imgUrl,
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+
+		    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+		        WeixinJSBridge.invoke('shareTimeline', {
+		            "img_url": window.shareData.imgUrl,
+		            "img_width": "640",
+		            "img_height": "640",
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+		}, false);
+		</script>
+		<div id=share style="display: none">
+			<img width=100% src="share.png"
+				style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+				ontouchstart="document.getElementById('share').style.display='none';" />
+		</div>
+		<div style="display: none;">
+			<script type="text/javascript">
+            var myData = { gameid: "dlxfk" };
+            //var domain = ["oixm.cn", "hiemma.cn", "peagame.net"][parseInt(Math.random() * 3)];
+			//window.shareData.timeLineLink = "http://"+ parseInt(Math.random()*100000) +"."+ myData.gameid +"."+domain+"/gamecenter.html?gameid=" + myData.gameid + (localStorage.myuid ? "&uid=" + localStorage.myuid : "");
+			function dp_submitScore(score){
+				myData.score = parseInt(score);
+				myData.scoreName ="坚持了"+score+"次";
+				document.title ="我在《弹力小方块》中弹出了"+myData.score+"次还没死，你有我这么能弹吗？";			
+				window.shareData.tTitle = document.title;
+			}
+			function onShareComplete(res) {
+                if (localStorage.myuid && myData.score != undefined) {
+                    setTimeout(function(){
+                        if (confirm("要将成绩提交到9G游戏排行榜吗？")) {
+                            //window.location = "http://wx.9g.com/rank/submit2.jsp?gameid=" + myData.gameid + "&uid=" + localStorage.myuid + "&score=" + myData.score + "&scorename=" + encodeURIComponent(myData.scoreName);
+                        }
+                        else {
+                            document.location.href = mebtnopenurl;
+                        }
+                    }, 500);
+                }
+				else {
+		        	document.location.href = mebtnopenurl;
+				}
+	        }
+			</script>
+			 
+
+</body>
+
+</html>

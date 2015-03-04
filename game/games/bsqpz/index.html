@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="utf-8" />
+<title>99%的人都被逼疯了，制作新消息头像，一起逼死强迫症！</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="figuremsg/base.css" />
+</head>
+<body>
+<div class="wrapper">
+
+	<div class="title"></div>
+
+	<div class="upload"><input type="file" accept="image/*" capture="camera" id="file" /><i>添加图片</i></div>
+	
+	<div id="error"></div>
+
+	<div class="selects">
+		<div class="clear">选择右上角要显示的消息数
+			<select class="vallist">
+			<option value="傻">傻</option>
+			<option value="王">王</option>
+			<option value="笨">笨</option>
+			<option value="呆">呆</option>
+			<option value="2B">2B</option>
+			<option value="SB">SB</option>
+			<option value="SB">NB</option>
+				<option value="1">1</option>
+				<option value="2B">2B</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+
+				<option value="31">31</option>
+				<option value="32">32</option>
+				<option value="33">33</option>
+				<option value="34">34</option>
+				<option value="35">35</option>
+				<option value="36">36</option>
+				<option value="37">37</option>
+				<option value="38">38</option>
+				<option value="39">39</option>
+				<option value="40">40</option>
+
+				<option value="41">41</option>
+				<option value="42">42</option>
+				<option value="43">43</option>
+				<option value="44">44</option>
+				<option value="45">45</option>
+				<option value="46">46</option>
+				<option value="47">47</option>
+				<option value="48">48</option>
+				<option value="49">49</option>
+				<option value="50">50</option>
+
+				<option value="51">51</option>
+				<option value="52">52</option>
+				<option value="53">53</option>
+				<option value="54">54</option>
+				<option value="55">55</option>
+				<option value="56">56</option>
+				<option value="57">57</option>
+				<option value="58">58</option>
+				<option value="59">59</option>
+				<option value="60">60</option>
+
+				<option value="61">61</option>
+				<option value="62">62</option>
+				<option value="63">63</option>
+				<option value="64">64</option>
+				<option value="65">65</option>
+				<option value="66">66</option>
+				<option value="67">67</option>
+				<option value="68">68</option>
+				<option value="69">69</option>
+				<option value="70">70</option>
+
+				<option value="71">71</option>
+				<option value="72">72</option>
+				<option value="73">73</option>
+				<option value="74">74</option>
+				<option value="75">75</option>
+				<option value="76">76</option>
+				<option value="77">77</option>
+				<option value="78">78</option>
+				<option value="79">79</option>
+				<option value="80">80</option>
+
+				<option value="81">81</option>
+				<option value="82">82</option>
+				<option value="83">83</option>
+				<option value="84">84</option>
+				<option value="85">85</option>
+				<option value="86">86</option>
+				<option value="87">87</option>
+				<option value="88">88</option>
+				<option value="89">89</option>
+				<option value="90">90</option>
+
+				<option value="91">91</option>
+				<option value="92">92</option>
+				<option value="93">93</option>
+				<option value="94">94</option>
+				<option value="95">95</option>
+				<option value="96">96</option>
+				<option value="97">97</option>
+				<option value="98">98</option>
+				<option value="99">99</option>
+
+				<option value="99+">99+</option>				
+			</select>	
+		</div>
+		<p>没有照片？试试下面头像</p>
+	</div>
+	<br>
+
+	<div class="img-list clear">
+		<ul id="imgList"></ul>
+	</div>
+
+	<a href="javascript:;" class="bingo">生成头像</a>
+	
+</div><!-- wrapper end -->
+
+ 
+
+<div class="share" style="display:none;">
+	<p><a href="javascript:;" class="reset-link"></a><a href="javascript:;" class="share-link"></a></p>
+	<img src="" class="new-pic" />
+</div><!-- share end -->
+
+<div class="mask1" style="display:none;"></div>
+<div class="mask2" style="display:none;"></div>
+
+<div class="toast_tip" style="display:none;">上传图片不能大于1MB</div>
+
+<script src="figuremsg/zepto.min.js"></script>
+<script>
+
+
+$(function(){
+	var WIN = window,
+	UA = WIN.navigator.userAgent,
+	IsAndroid = (/Android|HTC/i.test(UA) || !!(WIN.navigator['platform'] + '').match(/Linux/i)), /* HTC Flyer平板的UA字符串中不包含Android关键词 */
+	IsIPad = !IsAndroid && /iPad/i.test(UA),
+	IsIPhone = !IsAndroid && /iPod|iPhone/i.test(UA),
+	IsIOS =  IsIPad || IsIPhone;
+	
+	var upload = $('.upload'); //上传容器
+	var canvas = null; //canvas画布
+	var newPic = null; //图片对象
+	var flag = true; //确认是否选择图片
+	var num = 1; //选择数字
+	var mark = false; //
+	var uploadImg = ''; //缓存生成的图片
+	var mainImgUrl = '';
+	//var mainImgUrl = 'http://www.ijinshan.com/game/figuremsg/face.png';
+	if (IsIOS) {
+		mainImgUrl = 'http://www.haoid.cn';
+	} else {
+		mainImgUrl = 'http://mmbiz.qpic.cn/mmbiz/2zpp2iaH4HWFokcxP1RNheFgMB3UtGvYjPR3AfmKHnzgYDAYCJT5cpynUg55bTiaia2TkibXHORlemg82xJo3z3icoQ/640';
+	}
+	var timer = null; //选择图片延迟
+	var androidPic = '';
+	
+	var tempArr = []; //临时图片数组
+	var tempHtmlArr = []; //临时HTML片段数组
+	var tempLock = false; //循环锁
+	var isOver = false; //判断循环是否结束
+	
+	while(!isOver){
+		var ram = Math.round(Math.random()*18);
+		for(var i=0; i<4; i++){
+			if(ram===tempArr[i]){
+				tempLock = true;
+			}
+		}
+		if(!tempLock){
+			tempArr.push(ram);
+			tempHtmlArr.push('<li><img src="item'+ram+'.jpg" /></li>');
+		}
+		if(tempArr.length===4){
+			isOver = true;
+		}
+		tempLock = false;
+	}
+	
+	$("#imgList").append(tempHtmlArr.join(''));
+	
+	//选择推荐图片
+	$(".img-list li").on('click', function(){
+		timer && clearTimeout(timer);
+		mark = false;
+		num = $('.vallist option:selected').val();
+		$(this).addClass('cur').siblings().removeClass('cur');
+		timer = setTimeout(function(){
+			drawImage($(this).find('img').attr('src'));
+		}.bind(this),300);
+		//_hmt.push(['_trackEvent', 'add', 'click', 'recommend pic', 0]); //埋点
+	});
+	//选择数字
+	$(".vallist").on('change', function(){
+		num = $(this).val();
+		if(!mark){
+			drawImage($(".img-list li.cur").find('img').attr('src'));		
+		}else{
+			drawImage(uploadImg);
+		}
+		//_hmt.push(['_trackEvent', 'add', 'click', 'select number', 0]); //埋点
+	});
+	//确定保存
+	$(".bingo").on('click', function(){
+		if(flag){
+			alert('请选择添加图片');
+			return false;
+		}
+		$(".mask1").css('display','block');
+		$(".share").css('display','block');
+		
+		newPic = new Image();
+
+		if(!IsAndroid){
+			newPic.src = canvas.toDataURL("image/png");
+			newPic.className = "new-pic";
+			$(".share").append(newPic);		
+			mainImgUrl = newPic.src;
+		}else{
+			var url = 'http://g.weiqimobile.com/index.html';
+			$.ajax({
+				type: 'post',
+				url: url,
+				data: {
+					'userfile': canvas.toDataURL("image/png")
+				},
+				success:function(result){
+					var result = result;
+					if (typeof result == 'string') {
+						result = eval('('+ result +')');
+					}
+					mainImgUrl = result.data;
+					$(".share").find('img').attr('src',mainImgUrl);
+				},
+				error:function(){
+				}
+			});	
+		}
+		//_hmt.push(['_trackEvent', 'submit', 'click', 'confirm submit', 0]); //埋点
+	});
+	//重做按钮
+	$(".reset-link").on('click', function(){
+		flag = true;
+		upload.find('canvas').remove();
+		
+		$(".share").css('display','none');
+		$(".mask1").css('display','none');
+		//_hmt.push(['_trackEvent', 'reset', 'click', 'reset pic', 0]); //埋点
+	});
+	//分享按钮
+	$(".share-link").on('click', function(){
+		$(".mask2").css('display','block');
+		//_hmt.push(['_trackEvent', 'share', 'click', 'share pic', 0]); //埋点
+	});
+	//mask隐藏
+	$(".mask2").on('click', function(){
+		$(".mask2").css('display','none');
+	});
+	//生成canvas
+	function drawImage(src){
+		//标记
+		flag = false;
+	
+		canvas = document.createElement('canvas');
+		canvas.width = 100;  
+		canvas.height = 100; 
+		
+		var canvasCtx = canvas.getContext('2d');
+		var image = new Image();
+		var _x = 62;
+		var _fn = 28;
+		var _y = 30;
+		
+		if(num == '99+'){
+			_x = 62;
+			_fn = 20;
+			_y = 28;
+		}else if(num == '2B'){
+			_x = 64;
+			_fn = 26;
+		}else if(parseInt(num) < 10){
+			_x = 70;
+			_fn = 30;
+		}else if(parseInt(num) >= 10){
+			_x = 63;
+			_fn = 28;
+		}
+		
+		image.onload = function () {
+			if(this.width > this.height && this.width > 1280){
+				if (IsAndroid) {
+					canvasCtx.drawImage(this, 0, 0, this.width, this.height, 0, 0, 100, 100);
+				} else {
+					canvasCtx.drawImage(this, 0, 0, this.width, 1000, 0, 0, 100, 100);
+				}
+				
+			}else{
+				canvasCtx.drawImage(this, 0, 0, this.width, this.height, 0, 0, 100, 100);
+			}
+	
+			canvasCtx.beginPath();
+			canvasCtx.arc(80,22,20,0,2*Math.PI);
+			canvasCtx.fillStyle="#f00";
+			canvasCtx.fill();
+			canvasCtx.font=_fn+"px arial";
+			canvasCtx.fillStyle="#fff";
+			canvasCtx.fillText(num,_x,_y);
+		}
+		
+		image.src = src;
+		//canvas.toDataURL("image/png");
+		if($('.upload').find('canvas').length > 0){
+			$('.upload').find('canvas').remove();
+		}
+		$('.upload')[0].appendChild(canvas);
+	}
+	//读取file图像
+    function readAsDataURL(){
+        //检验是否为图像文件  
+        var file = document.getElementById("file").files[0];
+        var reader = new FileReader();  
+		
+        //将文件以Data URL形式读入页面  
+        reader.readAsDataURL(file);
+        reader.onload=function(e){
+			if($("#fileNewPic").find('img').length > 0){
+				$("#fileNewPic").find('img').remove();
+			}
+			if(IsAndroid){
+				drawImage("data:application/octet-stream;"+e.target.result.substr(e.target.result.indexOf("base64,")));
+				uploadImg = "data:application/octet-stream;"+e.target.result.substr(e.target.result.indexOf("base64,"));
+			}else{
+				drawImage(this.result);
+				uploadImg = this.result;			
+			}
+        }
+		reader.onerror = function(e) {
+			alert('图片读取失败，请换一张再试！');
+			return false;
+		}
+    }
+	//上传图片
+	$("#file").on('change', function(){
+		mark = true;
+		readAsDataURL();
+		//_hmt.push(['_trackEvent', 'add', 'click', 'add location pic', 0]); //埋点
+	});
+	function onBridgeReady() {
+		try{
+			var mainTitle="99%的人都被逼疯了，制作新消息头像，一起逼死强迫症！",
+				mainDesc="99%的人都被逼疯了",
+				mainURL= "http://g.weiqimobile.com/games/bsqpz/";
+			
+			//转发朋友圈
+			WeixinJSBridge.on("menu:share:timeline", function(e) {
+				WeixinJSBridge.invoke("shareTimeline", {
+					img_url:mainImgUrl,
+					img_width: "120",
+					img_height: "120",
+					link: mainURL,
+					desc: mainDesc,
+					title: mainTitle				
+				}, function(res) {
+					dialog();
+					$(".mask2").css('display','none');
+				});
+			});
+			//同步到微博
+			WeixinJSBridge.on("menu:share:weibo", function() {
+				WeixinJSBridge.invoke("shareWeibo", {
+					"content": mainDesc,
+					"url": mainURL
+				}, function(res) {
+					dialog();
+					$(".mask2").css('display','none');
+				});
+			});
+			//分享给朋友
+			WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+				WeixinJSBridge.invoke("sendAppMessage", {
+					img_url: mainImgUrl,
+					img_width: "120",
+					img_height: "120",
+					link: mainURL,
+					desc: mainDesc,
+					title: mainTitle
+				}, function(res) {
+					setTimeout(function(){
+						dialog();
+						$(".mask2").css('display','none');
+					},1);
+				});
+			});
+		}catch(e){
+			alert(e);
+		}
+	};
+	//执行
+	document.addEventListener('WeixinJSBridgeReady', function() {
+		onBridgeReady();
+	},false);
+	//分享弹出框
+	function dialog(){
+		if(URL.getQueryString('f') == 'fans'){
+			return false;
+		}
+		var t = confirm('组团逼死强迫症，快来关注我!微赢科技:viying001');
+		if(t){
+			window.location.href = 'http://www.dwz.cn/qZ3Ug';
+		}
+	}
+	
+});
+
+var URL = {
+	/**
+	 * 根据传入的query字符串返回键值对形式的对象
+	 * @param {String} queryString query字符串
+	 * @return {KeyValueObject}
+	 */
+	getQueryData: function(queryString) {
+		
+		/* 去掉字符串前面的"?"，并把&amp;转换为& */
+		queryString = queryString.replace(/^\?+/, '').replace(/&amp;/, '&');
+		var querys = queryString.split('&'),
+			i = querys.length,
+			_URLParms = {};
+		
+		while (i--) {
+			item = querys[i].split('=');
+			if (item[0]) {
+				var value = item[1] || '';
+				try {
+					value = decodeURIComponent(value);
+				} catch(e) {
+					value = unescape(value);
+				}
+				_URLParms[decodeURIComponent(item[0])] =  value;
+			}
+		}
+		return _URLParms;
+	},
+
+	/**
+	 * 获取当前页面或者指定DOM对象的URL中的指定的GET参数的值
+	 * @param {String} key 要获取的GET参数的键
+	 * @param {DOM} el 如此传递此参数，则获取这个DOM对象的url，如果不传则获取当前页面的url
+	 * @return {String|null}
+	 */
+	getQueryString: function(key, el) {
+		var parms,
+			queryString = el ? URL.getElSearchString(el) : window.location.search.substring(1);
+
+		parms = URL.getQueryData(queryString);
+		return (key in parms) ? parms[key] : null;
+	},
+
+	/**
+	 * 获取指定DOM对象的链接地址的queryString
+	 * @param {DOM} el 要获取参数的DOM对象
+	 * @return {String}
+	 */
+	getElSearchString: function(el) {
+		/* 在某些Android下获取不到el.search的值，要使用自定义方法从url中截取 */
+		var el = $(el).get(0),
+			searchString = el.search || '';
+		if (!searchString) {
+			var hrefString = ('FORM' == el.nodeName ? el.getAttribute('action') : el.getAttribute('href')),
+				pos = hrefString.indexOf('?');	
+			if (-1 !== pos) {
+				searchString = hrefString.slice(pos);
+			}
+		}
+		return searchString;
+	},
+
+	/**
+	 * 设置指定DOM对象或者页面的URL中的指定的GET参数的值
+	 * @param {DOM} el 设置这个DOM对象的url
+	 * @param {Object} data 要设置的GET参数，以键值对的方式提供
+	 */
+	setQueryString: function(el, data) {
+		var el = $(el),
+			elTag = el.get(0),
+			elSearch = elTag.search,
+			_searchString = elSearch || '',
+			_key,
+			_value;
+		/* 非<A>对象没有search属性 */
+		if (!elSearch) {
+			var hrefString,
+				nodeName = elTag.nodeName;
+			if ('FORM' == nodeName) {
+				if ('post' == elTag['method'].toLowerCase()) {
+					hrefString = el.attr('action') || (location + ''); /* 如果action为空则取当前页面的url */
+				} else {
+					/* 如果使用GET方式提交的表单，要把GET参数以HIDDEN表单字段的方式附加到表单中去 */
+					for (_key in data) {
+						_value = data[_key];
+						var inputEl = $('input[name="' + _key + '"]', el);
+						if  (inputEl) {
+							inputEl.val(_value);
+						} else {
+							el.append($('<input type="hidden" name="' +  _key + '" value="' +  _value + '" />'));
+						}
+					}
+					return;
+				}
+			} else {
+				hrefString = el.attr('href') || (location + ''); /* 如果href为空则取当前页面的url */
+			}
+			var startPos = hrefString.indexOf('?'),
+			endPos = hrefString.indexOf('#');
+			if (-1 == endPos) endPos = hrefString.length;
+			if (startPos < 0 || startPos > endPos) {
+				_searchString = '';
+				startPos = endPos; /* 用于下面设置searchString */
+			} else {
+				_searchString = hrefString.slice(startPos + 1, endPos);
+			}
+		}
+		
+		var URLParms = URL.getQueryData(_searchString), /* 获取对象原有的GET参数 */
+			_result = [];
+
+		/* 把新参数和对象原有的GET参数合并 */
+		for (_key in data) {
+			URLParms[_key] = data[_key];
+		}
+		
+		for (_key in URLParms) {
+			_value = URLParms[_key];
+			_result.push(_key + (_value ? ('=' + encodeURIComponent(_value)) : ''));
+		}
+		if (_result.length < 1) return;
+		
+		var newSearchString = '?' + _result.join('&');
+	
+		if (elSearch) {
+			elTag.search = newSearchString;
+		} else {
+			var attri = ('FORM' == nodeName) ? 'action' : 'href';
+			el.attr(attri, hrefString.slice(0, startPos) + newSearchString + hrefString.slice(endPos));
+		}
+	},
+
+	/**
+	 * 参数对象转为查询字符串片段
+	 */
+	objToQueryString: function(obj) {
+		var result = [], key, value, i;
+		for (key in obj) {
+			value = obj[key];
+			if (value instanceof Array) {
+				for (i = value.length; i--;) {
+					result.push(key + '[]=' + encodeURIComponent(value[i]));
+				}
+			} else {
+				result.push(key + ('' === value ? '' : ('=' + encodeURIComponent(value))));
+			}
+		}
+		return result.join('&');
+	}
+};
+</script>
+</body>
+</html>
+

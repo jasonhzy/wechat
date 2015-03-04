@@ -1,0 +1,129 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+  <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no,maximum-scale=1.0,initial-scale=1.0">
+    <title>史上最坑爹猜拳</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">
+<style>
+body, canvas, div {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (min-height:320px) and (max-height:480px){
+	#Cocos2dGameContainer{ height:480px;}
+}
+@media screen and (min-height:481px) and (max-height:5000px){
+	#Cocos2dGameContainer{ height:568px;}
+}
+</style>
+</head>
+<body style="padding: 0px; margin: 0px; border: 0px; background: rgb(0, 0, 0);">
+
+<div id="Cocos2dGameContainer" style="width: 320px; margin: 0px auto; position: relative; overflow: hidden;">
+   <canvas id="gameCanvas" class="gameCanvas" tabindex="99" style="outline: none; width: 320px;  background-color: black;"></canvas>
+</div>
+<script>
+    var wx = {}, cc = {};
+    wx.production = true;
+    cc.OrbitCamera = cc.CatmullRomBy = cc.CatmullRomTo = cc.CardinalSplineBy = cc.CardinalSplineTo = {};
+</script>
+<script src="js/engine.js"></script><div style="font-family: 黑体; position: absolute; left: -100px; top: -100px; line-height: normal; font-size: 20px;"></div>
+<script src="js/game.min.js"></script><style type="text/css">body,canvas,div{ -moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-khtml-user-select: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}</style>
+<script language=javascript>
+		var mebtnopenurl = 'http://g.weiqimobile.com/';
+		window.shareData = {
+		        "imgUrl": "http://g.weiqimobile.com/icon/cq.jpg",
+		        "timeLineLink": "http://g.weiqimobile.com/games/cq/",
+		        "tTitle": "史上最坑爹猜拳",
+		        "tContent": "史上最坑爹猜拳"
+		};
+				
+		function goHome(){
+			window.location=mebtnopenurl;
+		}
+		function clickMore(){
+			 if((window.location+"").indexOf("f=zf",1)>0){
+			 	window.location = "http://g.weiqimobile.com/";
+			  }
+			  else{
+			 	goHome();
+			  }
+		}
+		function dp_share(){
+			document.getElementById("share").style.display="";
+			
+		}
+		function dp_Ranking(){
+			window.location=mebtnopenurl;
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		    
+		    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+		        WeixinJSBridge.invoke('sendAppMessage', {
+		            "img_url": window.shareData.imgUrl,
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+
+		    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+		        WeixinJSBridge.invoke('shareTimeline', {
+		            "img_url": window.shareData.imgUrl,
+		            "img_width": "640",
+		            "img_height": "640",
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+		}, false);
+		</script>
+		<div id=share style="display: none">
+			<img width=100% src="share.png"
+				style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+				ontouchstart="document.getElementById('share').style.display='none';" />
+		</div>
+		<div style="display: none;">
+			<script type="text/javascript">
+            var myData = { gameid: "cq" };
+			//var domain = ["oixm.cn", "hiemma.cn", "peagame.net"][parseInt(Math.random() * 3)];
+			//window.shareData.timeLineLink = "http://"+ parseInt(Math.random()*100000) +"."+ myData.gameid +"."+domain+"/gc.html?gameid=" + myData.gameid + (localStorage.myuid ? "&uid=" + localStorage.myuid : "");
+			function dp_submitScore(score,stitle){
+				myData.score =parseInt(score);
+				myData.scoreName = "赢了"+score+"分";
+				document.title =stitle;
+				window.shareData.tTitle = document.title;
+			}
+			function onShareComplete(res) {
+                if (localStorage.myuid && myData.score != undefined) {
+                    setTimeout(function(){
+                        if (confirm("要将成绩提交到9G游戏排行榜吗？")) {
+                           // window.location = "http://wx.9g.com/rank/submit2.jsp?gameid=" + myData.gameid + "&uid=" + localStorage.myuid + "&score=" + myData.score + "&scorename=" + encodeURIComponent(myData.scoreName);
+                        }
+                        else {
+                            document.location.href = mebtnopenurl;
+                        }
+                    }, 500);
+                }
+				else {
+		        	document.location.href = mebtnopenurl;
+				}
+	        }
+			</script>
+			 
+
+</body></html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>一线连</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimal-ui,user-scalable=no">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #js-fps {
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:1000;
+            margin:0 auto;
+            color:#FFF;
+            font-size:20px;
+        }
+        body{
+            background: #000;
+            overflow: hidden;
+        }
+        #bg,canvas{
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+        .hide{
+            display: none;
+        }
+        #share{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.5);
+          display: none;
+          z-index: 110;
+        }
+    </style>
+    <script>
+        var _czc = _czc || [];
+        _czc.push(['_setAccount',1253076824]);
+    </script>
+</head>
+<body>
+    <script src="lib/hilo-standalone.js"></script>
+    <script src="js/yibihua.min.js"></script>
+    	<script language=javascript>
+		var mebtnopenurl = 'http://g.weiqimobile.com/';
+		window.shareData = {
+		        "imgUrl": "http://g.weiqimobile.com/icon/yxl.png",
+		        "timeLineLink": "http://g.weiqimobile.com/games/yxl/",
+		        "tTitle": "一笔画",
+		        "tContent": "一笔画是通过点击图中的各个点，连成两个之间的线，达到画线效果。将图中所有的线连接起来，游戏通关"
+		};
+				
+		function goHome(){
+			window.location=mebtnopenurl;
+		}
+		function clickMore(){
+			if((window.location+"").indexOf("f=zf",1)>0){
+				window.location = "http://g.weiqimobile.com/";
+			 }
+			 else{
+				goHome();
+			 }
+		}
+		function dp_share(){
+			document.getElementById("share").style.display="";
+			
+		}
+		function dp_Ranking(){
+			window.location=mebtnopenurl;
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		    
+		    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+		        WeixinJSBridge.invoke('sendAppMessage', {
+		            "img_url": window.shareData.imgUrl,
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+
+		    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+		        WeixinJSBridge.invoke('shareTimeline', {
+		            "img_url": window.shareData.imgUrl,
+		            "img_width": "640",
+		            "img_height": "640",
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+		}, false);
+		</script>
+		<div id=share style="display: none">
+			<img width="100%" src="share.png"
+				style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+				ontouchstart="document.getElementById('share').style.display='none';" />
+		</div>
+		<div style="display: none;">
+			<script type="text/javascript">
+            var myData = { gameid: "yxl" };
+			 //var domain = ["oixm.cn", "hiemma.cn", "peagame.net"][parseInt(Math.random() * 3)];
+			//window.shareData.timeLineLink = "http://"+ parseInt(Math.random()*100000) +"."+ myData.gameid +"."+domain+"/gamecenter.html?gameid=" + myData.gameid + (localStorage.myuid ? "&uid=" + localStorage.myuid : "");
+			function dp_submitScore(score,iswin,stitle){
+				if(iswin==0){
+					myData.score = parseInt(score);
+					myData.scoreName ="成功闯了"+score+"关";
+					document.title =stitle;			
+					window.shareData.tTitle = document.title;
+				}
+			}
+			function onShareComplete(res) {
+                if (localStorage.myuid && myData.score != undefined) {
+                    setTimeout(function(){
+                        if (confirm("要将成绩提交到9G游戏排行榜吗？")) {
+                           // window.location = "http://wx.9g.com/rank/submit2.jsp?gameid=" + myData.gameid + "&uid=" + localStorage.myuid + "&score=" + myData.score + "&scorename=" + encodeURIComponent(myData.scoreName);
+                        }
+                        else {
+                            document.location.href = mebtnopenurl;
+                        }
+                    }, 500);
+                }
+				else {
+		        	document.location.href = mebtnopenurl;
+				}
+	        }
+			</script>
+			 
+</body>
+</html>

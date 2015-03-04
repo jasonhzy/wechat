@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<include file="Public:header" />
+<body>
+<div class="header_login">
+	<div class="header_login_main">
+    	<div class="logo">
+    	  <a href="/"><img src="{pigcms::RES}/images/login/logo.png" width="186" height="48" alt="好站长"/>
+    	</div>
+        <ul>
+        	<li><a href="/"><img src="{pigcms::RES}/images/login/icon_index.png" width="25" height="22"/></a></li>
+            <li><a href="{pigcms::U('Index/contact')}">关于我们</a></li>
+            <li><a href="{pigcms::U('Index/case')}">成功案例</a></li>
+            <li><a href="{pigcms::U('Index/agency')}">加盟代理</a></li>
+            <li><a href="{pigcms::U('Index/reg')}">申请入驻</a></li>
+        </ul>
+  </div>
+</div>
+<div class="bg_login_main">
+	<div class="login_main">
+      <div class="img"><img src="{pigcms::RES}/images/login/img.png" width="485" height="485"/></div>
+      <div class="img02"><img src="{pigcms::RES}/images/login/img02.png" width="127" height="127"/></div>
+      <form action="{pigcms::U('Users/checklogin')}" method="post">
+      <input name="username" type="text" class="txt_name" placeholder="平台账号" />
+      <input name="password" type="password" class="txt_pwd" placeholder="密码" />
+      <input name="captcha" type="text" class="txt_code" placeholder="验证码" />
+       <script>
+        function refreshImg(){
+        document.getElementById("txtCheckCode").src="/index.php?m=Index&a=verify&s="+Math.random();
+        }
+       </script>
+        <div class="code">
+          <img src="{pigcms::U('Index/verify')}" width="81" height="31" id="txtCheckCode" alt="验证码" data-url="{pigcms::U('Index/verify')}" />
+          <a href="javascript:refreshImg();">换一张</a>
+        </div>
+      	<div class="op">
+        	<!--<span><input name="" type="checkbox" value="" />下次自动登录</span>
+            <a href="#">忘记密码？</a> -->
+        </div>
+      <input type="submit" class="btn_login" value="" />
+      <a href="{pigcms::U('Index/reg')}" class="btn_reg">新用户注册</a>
+      </form>
+    </div>
+</div>
+<script type="text/javascript">try{Dd('webpage_6').className='left_menu_on';}catch(e){}</script>
+<script type="text/javascript">$(function(){$(".img").addClass("active");$(".btn_reg").animate({right:"30px"},"slow");})</script>
+<!---底部 begin--->
+<div class="joinLine">全国招商热线：400-000-0000</div>
+<div class="footer">
+    <div class="footer_con">
+        <div class="logo">
+            <a href="/">好站长</a>
+        </div>
+        <div class="link">
+            <p><include file="Public:link" /></p>
+            <p>客服专线：13800000000   QQ：2943747028   邮箱：2943747028@qq.com</p>
+            <p>网址：<SCRIPT LANGUAGE="Javascript">
+var Words ="%3Cfont%20color%3Dred%3E%3Cb%3E%u543E%u7231%u6E90%u7801%3Ca%20href%3Dhttp%3A//bbs.52codes.net%20target%3D_blank%3Ehttp%3A//bbs.52codes.net%3C/a%3E%3C/b%3E%3C/font%3E"
+function OutWord()
+{
+var NewWords;
+NewWords = unescape(Words);
+document.write(NewWords);
+} 
+OutWord();
+// -->
+</SCRIPT></p>
+			<p>地址：湖南省长沙市    </p>
+        </div>
+        <div class="code"><img src="{pigcms::RES}/images/code.jpg" width="120" height="120" /></div>
+    </div>
+</div>
+<div class="copyright"> http://bbs.52codes.net Copyright (c) 2013-2016 吾爱源码 | 版权所有

@@ -1,0 +1,46 @@
+﻿<div class="wrap_header">
+    <div class="header">
+        <div class="navigation">
+            <div class="logo"><a href="./">吾爱源码</a></div>
+            <ul>
+                <li class="current"><a href="/">首页</a></li>
+                <li><a href="./index.php?m=Index&a=index#func">功能</a></li>
+                <li><a href="{pigcms::U('Index/case')}">案例</a></li>
+                <li><a href="{pigcms::U('Index/agency')}">代理</a></li>
+                <li><a href="{pigcms::U('Index/reg')}">入驻</a></li>
+                <li><a href="{pigcms::U('Index/contact')}">联系</a></li>
+				<li><a href="{pigcms::U('Index/contact')}">关于</a></li>
+            </ul>
+            <div class="login">
+                <if condition="$_SESSION['uid']==false">
+                  <a href="{pigcms::U('Index/login')}">登录</a>
+                  <a href="{pigcms::U('Index/reg')}" <if condition="$curr eq 'reg' ">class="current"</if>>注册</a>
+                <else />
+				  <li class="menuon"><a href="/index.php?g=User&m=Index&a=index">管理</a></li>
+                 <!-- <a href="{pigcms::U('Home/Index/logout')}">注销</a><a href="{pigcms::U('User/Index/index')}"><php>echo $_SESSION['uname']</php></a>-->
+				 <a href="/#" onclick="Javascript:window.open('/index.php?g=System&m=Admin&a=logout','_blank')" >注销</a>
+                </if>
+            </div>
+            <!---201408 热线--->
+            <div class="hotline02">全国招商热线400-000-0000</div>
+            <div class="bluemobi">
+              <a href="#" target="_blank"><img src="{pigcms::RES}/images/hotline.png" width="219" height="76" /></a>
+            </div>
+            <script type="text/javascript">
+            	$(function(){
+					setInterval(show,10000);
+					function show(){
+						if($(".bluemobi").css("display")=="block"){
+							$(".bluemobi").hide();
+							$(".hotline02").show();
+						}else{
+							$(".bluemobi").show();
+							$(".hotline02").hide();
+						}
+					}
+				})	
+            </script>
+            <!---@20140823 热线 end--->
+        </div>
+    </div>
+</div>

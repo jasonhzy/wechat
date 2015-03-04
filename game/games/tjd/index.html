@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<title>淘金豆</title>
+
+    <meta name="description" content="Online mobile game. Catch the gold coins at the end of the rainbow." />
+    <meta name="author" content="liguanjian" qq="418197255" iphone="18200740514"/>
+
+    <meta name="viewport" content="width=320, height=480, user-scalable=no, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-startup-image" href="applestart.png" />
+    <link rel="apple-touch-icon" href="appleicon.png" />
+	<link rel="shortcut icon" href="gold.favicon.ico" type="image/x-icon" />
+	<style type="text/css">
+		body { margin: 0; padding: 0; text-align: center; font-family: sans-serif; background: #000; color: #fff; position: relative; }
+        #SF_Wrap { display: block; margin: 0 auto; padding: 0; width: 320px; height: 480px; position: relative; background: transparent; position: relative; }
+        #SF_Game { position: absolute; top: 0; left: 0; background: transparent; }
+
+        #textLayer { position: fixed; bottom: 0px; left: 0; width: 320px; background: rgba(0,0,0,0.1); z-index: 1000; }
+        #textLayer p { text-align: center; padding: 5px 0; margin: 0; font-family: monospace; }
+        #textLayer a { color: #fff; text-decoration: none; font-weight: bold; }
+        #textLayer a:hover { color: #f0f; }
+        #logo { display: none; }
+
+        iframe { position: absolute; bottom: 0; left: 0; }
+
+</style>
+
+</head>
+<link rel="shortcut icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<body onLoad="SF_gameStart();">
+<noscript>
+	<h1>To play this game you will need to enable javascript</h1>
+</noscript>
+
+
+<img src="appleicon128.png" id="logo" />
+
+<div id="SF_Wrap">
+	<canvas id="SF_Game"></canvas>
+    <div id="textLayer">
+        <a href="#" style="text-align:left;" onClick="dp_share();">炫耀一下</a>
+           <a href="#" style="text-align:right;" onClick="clickMore();">更多游戏</a>
+    </div>
+</div>
+		<input id="bt-game-id" type="hidden" value="4-gold">
+
+<script type="text/javascript" src="core/base.js"></script>
+<script type="text/javascript" src="core/game.js"></script>
+<script type="text/javascript" src="core/audio.js"></script>
+<script type="text/javascript" src="core/ua.js"></script>
+<script type="text/javascript" src="core/sprite.js"></script>
+<script type="text/javascript" src="core/animation.js"></script>
+<script type="text/javascript" src="core/explosion.js"></script>
+<script type="text/javascript" src="core/sparkle.js"></script>
+<script type="text/javascript" src="core/input.js"></script>
+<script type="text/javascript" src="core/draw.js"></script>
+<script type="text/javascript" src="core/console.js"></script>
+
+<script type="text/javascript" src="libs/buzz.js"></script>
+<script type="text/javascript" src="libs/stats.js"></script>
+
+<script type="text/javascript" src="gold/data.js"></script>
+<script type="text/javascript" src="gold/player.js"></script>
+<script type="text/javascript" src="gold/cloud.js"></script>
+<script type="text/javascript" src="gold/drink.js"></script>
+<script type="text/javascript" src="gold/gold.js"></script>
+<script type="text/javascript">
+
+    function SF_gameStart() {
+        if (!!document.createElement('canvas').getContext === false) {
+
+            document.writeln('<h1>Your browser does not support canvas</h1>');
+            document.writeln('<h2>To play this game you will need to upgrade your browser</h2>');
+
+        }
+        else {
+            var game = new SF.Gold();
+            game.init();
+        }
+    }
+
+
+</script>
+<script language=javascript>
+		var mebtnopenurl = 'http://g.weiqimobile.com/';
+		window.shareData = {
+		        "imgUrl": "http://game.vbaitong.com/Public/tjd/icon.png",
+		        "timeLineLink": "http://g.weiqimobile.com/games/tjd/",
+		        "tTitle": "淘金豆",
+		        "tContent": "淘金豆"
+		};
+				
+		function goHome(){
+			window.location=mebtnopenurl;
+		}
+		function clickMore(){
+			if((window.location+"").indexOf("f=zf",1)>0){
+				window.location = "http://g.weiqimobile.com/";
+			 }
+			 else{
+				goHome();
+			 }
+			 
+		}
+		function dp_share(){
+			document.getElementById("share").style.display="";
+			
+		}
+		function dp_Ranking(){
+			window.location=mebtnopenurl;
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		    
+		    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+		        WeixinJSBridge.invoke('sendAppMessage', {
+		            "img_url": window.shareData.imgUrl,
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+
+		    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+		        WeixinJSBridge.invoke('shareTimeline', {
+		            "img_url": window.shareData.imgUrl,
+		            "img_width": "640",
+		            "img_height": "640",
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+		}, false);
+		</script>
+		<div id=share style="display: none">
+			<img width=100% src="share.png"
+				style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+				ontouchstart="document.getElementById('share').style.display='none';" />
+		</div>
+		<div style="display: none;">
+			<script type="text/javascript">
+            var myData = { gameid: "tjd" };
+			 //var domain = ["oixm.cn", "hiemma.cn", "peagame.net"][parseInt(Math.random() * 3)];
+			//window.shareData.timeLineLink = "http://"+ parseInt(Math.random()*100000) +"."+ myData.gameid +"."+domain+"/gamecenter.html?gameid=" + myData.gameid + (localStorage.myuid ? "&uid=" + localStorage.myuid : "");
+			function dp_submitScore(score){
+				myData.score = score;
+				myData.scoreName ="淘到"+score+"克金子";
+				document.title ="我玩【淘金豆】淘到"+myData.score+"克黄金，让我看看你的实力吧！";
+			
+				window.shareData.tTitle = document.title;
+			}
+			function onShareComplete(res) {
+                if (localStorage.myuid && myData.score != undefined) {
+                    setTimeout(function(){
+                        if (confirm("要将成绩提交到9G游戏排行榜吗？")) {
+                           // window.location = "http://wx.9g.com/rank/submit2.jsp?gameid=" + myData.gameid + "&uid=" + localStorage.myuid + "&score=" + myData.score + "&scorename=" + encodeURIComponent(myData.scoreName);
+                        }
+                        else {
+                            document.location.href = mebtnopenurl;
+                        }
+                    }, 500);
+                }
+				else {
+		        	document.location.href = mebtnopenurl;
+				}
+	        }
+			</script>
+	 
+
+
+</body>
+
+</html>

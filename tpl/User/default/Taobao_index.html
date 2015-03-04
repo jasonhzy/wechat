@@ -1,0 +1,38 @@
+<include file="Public:head"/>  
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<div class="content">
+<div class="cLineB">
+  <h4>100多款微信朋友圈游戏配置: 直接将游戏链接 (http://域名/game) 对应自定义菜单或微网站链接里面即可。<span class="FAQ"></span></h4>             
+ </div>
+    <div class="msgWrap form"><form method="post"   action="<if condition="$taobao['keyword'] neq ''">index.php?g=User&m=Taobao&a=edit&token={pigcms:$Think.get.token}</if>"  enctype="multipart/form-data" >  
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="userinfoArea">
+              <tbody>
+               <tr>
+                  <th valign="top"><span class="red">*</span><label for="title">微信朋友圈游戏配置: 点击打开链接：<a href="/game" target="_blank" class="blue">微信朋友圈游戏链接地址</a> </label></th>
+                <!--  <td>直接将游戏链接(http://域名/game)对应自定义菜单或微网站链接里面即可。<input type="text" style="display:none"  name="keyword"  id="title" value="淘宝11"   class="px" tabindex="1" size="80"></td> -->
+                </tr>
+                         <tr>
+                  <th valign="top"></th>
+                  <td>点击打开链接，在浏览器中复制游戏链接：<a href="/game" target="_blank" class="blue">微信朋友圈游戏链接地址</a>　 例如：微信朋友圈游戏链接地址: <a href="/game" target="_blank">http://域名/game</a><br />    
+                  	</td>
+                </tr>
+             
+				          <p style="text-align:center;">
+<img src="/tpl/static/game.jpg" />
+</p>
+              </tbody>
+            </table>
+</form>
+            </div>
+            </div>        <div class="clr"></div>
+      </div>
+    </div>
+ 
+  </div>
+   
+  
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>  
+ 
