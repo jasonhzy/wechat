@@ -7,14 +7,10 @@
 # Folders
 #
 ################################################################################
-tpl/static/attachment/
-themes/
-RunTime/
-customer_imgs/
 uploads/
 .idea/
 .settings/
-attached/
+Conf/logs/
 ###############################################################################
 #
 # Files
@@ -26,7 +22,5 @@ attached/
 .DS_Store
 .buildpath
 .project
-Conf/logs/
-uploads/
 
 
