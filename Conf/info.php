@@ -2,8 +2,8 @@
 return array (
   'site_name' => '派尔微信营销',
   'site_title' => '派尔微信营销-国内优秀的微信公众服务平台',
-  'site_logo' => 'http://pigcms1.cn/uploads/e/etoema1425461454/6/8/3/6/thumb_54f6d8cbc8b4c.png',
-  'site_url' => 'http://pigcms1.cn',
+  'site_logo' => 'http://pigcms.cn/uploads/t/tbbyhe1425519112/b/e/7/2/thumb_54f7b75906c78.png',
+  'site_url' => 'http://pigcms.cn',
   'site_my' => 'pinet',
   'server_key' => 'bc9ed510a91c14331cf2f6ce4169807b',
   'server_topdomain' => 'pinet.cc',
