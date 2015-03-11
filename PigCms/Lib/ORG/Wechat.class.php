@@ -68,28 +68,28 @@ class Wechat {
 		}
 	}
 	/**
-	 * »ñÈ¡Î¢ĞÅÍÆËÍµÄÊı¾İ
-	 * @return array ×ª»»ÎªÊı×éºóµÄÊı¾İ
+	 * è·å–å¾®ä¿¡æ¨é€çš„æ•°æ®
+	 * @return array è½¬æ¢ä¸ºæ•°ç»„åçš„æ•°æ®
 	 */	
 	public function request() {
 		return $this->data;
 	}
 	/**
-	 * * ÏìÓ¦Î¢ĞÅ·¢ËÍµÄĞÅÏ¢£¨×Ô¶¯»Ø¸´£©
-	 * @param  string $to      ½ÓÊÕÓÃ»§Ãû
-	 * @param  string $from    ·¢ËÍÕßÓÃ»§Ãû
-	 * @param  array  $content »Ø¸´ĞÅÏ¢£¬ÎÄ±¾ĞÅÏ¢ÎªstringÀàĞÍ
-	 * @param  string $type    ÏûÏ¢ÀàĞÍ
-	 * @param  string $flag    ÊÇ·ñĞÂ±ê¸Õ½ÓÊÜµ½µÄĞÅÏ¢
-	 * @return string          XML×Ö·û´®
+	 * * å“åº”å¾®ä¿¡å‘é€çš„ä¿¡æ¯ï¼ˆè‡ªåŠ¨å›å¤ï¼‰
+	 * @param  string $to      æ¥æ”¶ç”¨æˆ·å
+	 * @param  string $from    å‘é€è€…ç”¨æˆ·å
+	 * @param  array  $content å›å¤ä¿¡æ¯ï¼Œæ–‡æœ¬ä¿¡æ¯ä¸ºstringç±»å‹
+	 * @param  string $type    æ¶ˆæ¯ç±»å‹
+	 * @param  string $flag    æ˜¯å¦æ–°æ ‡åˆšæ¥å—åˆ°çš„ä¿¡æ¯
+	 * @return string          XMLå­—ç¬¦ä¸²
 	 */
 	public function response($content, $type = 'text', $flag = 0) {
 		$this->data = array('ToUserName' => $this->data['FromUserName'], 'FromUserName' => $this->data['ToUserName'], 'CreateTime' => NOW_TIME, 'MsgType' => $type,);
-		/* Ìí¼ÓÀàĞÍÊı¾İ */
+		/* æ·»åŠ ç±»å‹æ•°æ® */
 		$this->$type($content);
-		/* Ìí¼Ó×´Ì¬ */
+		/* æ·»åŠ çŠ¶æ€ */
 		$this->data['FuncFlag'] = $flag;
-		/* ×ª»»Êı¾İÎªXML */
+		/* è½¬æ¢æ•°æ®ä¸ºXML */
 		$xml = new SimpleXMLElement('<xml></xml>');
 		$this->data2xml($xml, $this->data);
 		if (isset($_GET['encrypt_type']) && $_GET['encrypt_type'] == 'aes') {
@@ -99,23 +99,23 @@ class Wechat {
 		}
 	}
 	/**
-	 * »Ø¸´ÎÄ±¾ĞÅÏ¢
-	 * @param  string $content Òª»Ø¸´µÄĞÅÏ¢
+	 * å›å¤æ–‡æœ¬ä¿¡æ¯
+	 * @param  string $content è¦å›å¤çš„ä¿¡æ¯
 	 */
 	private function text($content) {
 		$this->data['Content'] = $content;
 	}
 	/**
-	 * »Ø¸´ÒôÀÖĞÅÏ¢
-	 * @param  string $content Òª»Ø¸´µÄÒôÀÖ
+	 * å›å¤éŸ³ä¹ä¿¡æ¯
+	 * @param  string $content è¦å›å¤çš„éŸ³ä¹
 	 */
 	private function music($music) {
 		list($music['Title'], $music['Description'], $music['MusicUrl'], $music['HQMusicUrl']) = $music;
 		$this->data['Music'] = $music;
 	}
 	/**
-	 * »Ø¸´Í¼ÎÄĞÅÏ¢
-	 * @param  string $news Òª»Ø¸´µÄÍ¼ÎÄÄÚÈİ
+	 * å›å¤å›¾æ–‡ä¿¡æ¯
+	 * @param  string $news è¦å›å¤çš„å›¾æ–‡å†…å®¹
 	 */
 	private function news($news) {
 		$articles = array();
@@ -123,7 +123,7 @@ class Wechat {
 			list($articles[$key]['Title'], $articles[$key]['Description'], $articles[$key]['PicUrl'], $articles[$key]['Url']) = $value;
 			if ($key >= 9) {
 				break;
-                        }//×î¶àÖ»ÔÊĞí10µ÷ĞÂÎÅ
+                        }//æœ€å¤šåªå…è®¸10è°ƒæ–°é—»
 		}
 		$this->data['ArticleCount'] = count($articles);
 		$this->data['Articles'] = $articles;
@@ -133,9 +133,9 @@ class Wechat {
 	}
 	private function data2xml($xml, $data, $item = 'item') {
 		foreach ($data as $key => $value) {
-                         /* Ö¸¶¨Ä¬ÈÏµÄÊı×Ökey */
+                         /* æŒ‡å®šé»˜è®¤çš„æ•°å­—key */
 			is_numeric($key) && $key = $item;
-                        /* Ìí¼Ó×ÓÔªËØ */
+                        /* æ·»åŠ å­å…ƒç´  */
 			if (is_array($value) || is_object($value)) {
 				$child = $xml->addChild($key);
 				$this->data2xml($child, $value, $item);
